@@ -1,0 +1,184 @@
+html,
+body {
+    font-family: 'Roboto', monospace, sans-serif;
+    height: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+    overflow: hidden;
+}
+
+/* header */
+header {
+    height: 70px;
+}
+
+.background0 {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 0px;
+}
+
+.background {
+    font-size: 18px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* Each inner div (#sources, #chat, #outputs) fills its section */
+.background>div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* 3-Column Grid Layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    gap: 20px;
+    margin-top: 30px;
+    padding: 10px 0;
+    overflow: hidden;
+
+    /* console.log(window.innerHeight = 948px which is 100vh) */
+    /* screen(total) - header - [padding*2] - margin(top)        -> [] is in background*/
+    height: calc(100vh - 70px - 20px*2 - 30px);
+}
+
+/* first column */
+.drag_drop {
+    font-size: 18px;
+    font-family: 'Roboto', monospace, sans-serif;
+    border: 2px dashed gray;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    color: gray;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.link {
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.no_disp {
+    display: none;
+}
+
+.search_box {
+    font-size: 18px;
+    font-family: 'Roboto', monospace, sans-serif;
+    padding: 6px 10px;
+    /* width: 250px; */
+    border-radius: 8px;
+    flex-shrink: 0;
+
+}
+
+.header_buttons {
+    font-family: 'Roboto', monospace, sans-serif;
+    font-size: 18px;
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+
+.send_button {
+    font-size: 18px;
+    font-family: 'Roboto', monospace, sans-serif;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.three_sections {
+    flex: 1;
+    overflow-y: auto;
+    border: 0px solid black;
+    min-height: 0;
+}
+
+/* The scrollable box grows to fill remaining space */
+#fileBox,
+#chatBox {
+    border: 0px;
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+    /* important — without this flex won't shrink below content size */
+}
+
+.user_input {
+    width: 100%;
+    resize: none;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 8px;
+    border-radius: 8px;
+    font-family: 'Roboto', monospace, sans-serif;
+    font-size: inherit;
+}
+
+.input-container {
+    display: flex;
+    gap: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+}
+
+.notesPanel {
+    position: fixed;
+    top: 0;
+    right: -340px;
+    width: 320px;
+    height: 100vh;
+    background: #f9f9f9;
+    border-left: 1px solid #ccc;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    box-sizing: border-box;
+    transition: right 0.3s ease;
+    z-index: 1000;
+}
+
+.notes_input {
+    flex: 1;
+    resize: none;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: 'Roboto', monospace, sans-serif;
+    font-size: 18px;
+    box-sizing: border-box;
+}
+
+/* 2-Column Grid Layout for output area */
+.grid-container2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    /* margin-top: 30px; */
+    padding: 10px 0;
+    flex-shrink: 0;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RISHI AI</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <script src="server.js" defer></script>
+</head>
+
+<body>
+    <!-- notes area -->
+    <div id="notesPanel" class="notesPanel">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <h3 style="margin: 0;">Notes</h3>
+            <button onclick="addNote()"
+                style="font-size: 18px; background: none; border: none; cursor: pointer;">✕</button>
+        </div>
+        <textarea id="notesInput" placeholder="Write your notes here..." class="notes_input"></textarea>
+        <button onclick="clearNotes()"
+            style="margin-top: 10px; padding: 8px; border-radius: 8px; cursor: pointer;">Clear
+            notes</button>
+    </div>
+
+    <!-- Main header: name, account, conversation, share, conversations -->
+    <header>
+        <h1 class="background0">
+            <input class="header_buttons" type="text" id="conversationName" placeholder="Name Conversation">
+            <button class="header_buttons" onclick="createNewConversation()">New Conversation</button>
+            <button class="header_buttons" onclick="shareConversation()">Share</button>
+            <button class="header_buttons" onclick="openSettings()">Settings</button>
+            <button class="header_buttons" onclick="openAccount()">Account</button>
+            <button class="header_buttons" onclick="openOtherPages()">Other Useful Pages</button>
+        </h1>
+    </header>
+
+    <!-- split it into 3 parts -->
+    <main class="grid-container">
+
+        <!-- Storage area: for key files, notes (user uploads) -->
+        <section class="background">
+            <div id="sources">
+                <h3>Uploaded files</h3>
+
+                <!-- Drag and Drop zone -->
+                <div id="dropZone" class="drag_drop">
+                    Drag & drop files here, or
+                    <label for="filePicker" class="link">browse</label>
+                    <input type="file" id="filePicker" multiple class="no_disp">
+                </div>
+                <br>
+
+                <!-- search files -->
+                <input type="text" id="search" placeholder="Search files..." oninput="filterFiles()" class="search_box">
+                <br>
+
+                <button id="docToggleBtn" onclick="toggleDocs()"
+                    style="font-size: 18px; width:100%; padding:8px; border-radius:8px; cursor:pointer; margin-bottom:8px; background-color:#1a73e8; color:white; border:none;">
+                    Documents: ON
+                </button>
+                <div id="fileBox" class="three_sections1">
+                    <ul id="fileList"></ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Conversation area: user inputs and rishi responses, and user input typing area -->
+        <section class="background">
+            <div id="chat">
+                <h3>Chat with RISHI</h3>
+
+                <!-- Conversation box -->
+                <div id="chatBox" class="three_sections">
+                </div>
+                <br>
+
+                <!-- User chat input area -->
+                <div class="input-container">
+                    <textarea id="chatInput" placeholder="Ask a question..." rows="1"
+                        onkeydown="if(event.key==='Enter' && !event.shiftKey) { event.preventDefault(); ask(); }"
+                        oninput="autoGrow(this)" class="user_input"></textarea>
+                    <button onclick="ask()" class="send_button">Send</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- File outputs: widgets, reports, emails, notes, mindmaps -->
+        <section class="background">
+            <div id="outputs">
+                <h3>Outputs and Widgets</h3>
+
+                <section class="grid-container2">
+                    <button onclick="addOutput()" class='header_buttons'>Email</button>
+                    <button onclick="addOutput()" class='header_buttons'>Mind map</button>
+                    <button onclick="addOutput()" class='header_buttons'>Slide</button>
+                </section>
+                <div id="outputBox" class="three_sections">
+                </div>
+
+                <button onclick="addNote()" class='header_buttons' style="margin-top: 10px;" onkeydown="if(event.key==='Enter' && !event.shiftKey) { event.preventDefault(); addNote(); }"
+>Note</button>
+            </div>
+
+        </section>
+    </main>
+</body>
+
+</html>
