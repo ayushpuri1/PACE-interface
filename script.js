@@ -568,7 +568,7 @@ function openOtherPages() {
     document.querySelectorAll('.rishi-dropdown').forEach(el => el.remove());
 
     const btn  = [...document.querySelectorAll('.header_buttons')]
-                    .find(b => b.textContent.trim() === 'Other Useful Pages');
+                    .find(b => b.textContent.trim() === 'Others');
     const rect  = btn.getBoundingClientRect();
     const dark  = currentTheme === 'dark';
     const bg    = dark ? '#2b2b2b' : '#fff';
