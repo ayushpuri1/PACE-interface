@@ -10,6 +10,7 @@ body {
 /* header */
 header {
     height: 70px;
+    border-bottom: 1px solid #d0d0d0;
 }
 
 .background0 {
@@ -94,6 +95,12 @@ header {
     font-size: 18px;
     padding: 6px 10px;
     border-radius: 8px;
+}
+
+.new-conversation-btn {
+    background-color: #111;
+    color: #fff;
+    border-color: #111;
 }
 
 .send_button {
